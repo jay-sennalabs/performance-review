@@ -8,5 +8,10 @@
  * }}
  */
 export function findCognitiveFunction(mbti) {
-  throw new Error("Not implemented");
+  let [first, second, third, fourth] = mbti;
+
+  second += fourth.toLowerCase() === "p" ? "e" : "i";
+  third += fourth.toLowerCase() === "j" ? "e" : "i";
+
+  return {};
 }

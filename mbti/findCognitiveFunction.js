@@ -7,6 +7,18 @@
  *  inferior: string,
  * }}
  */
+
+const mbtiCategories = {
+  i: "e",
+  e: "i",
+  s: "n",
+  n: "s",
+  t: "f",
+  f: "t",
+  j: "p",
+  p: "j"
+};
+
 export function findCognitiveFunction(mbti) {
   let [first, second, third, fourth] = mbti;
   let dominant = "";
@@ -23,5 +35,19 @@ export function findCognitiveFunction(mbti) {
     auxiliary = second;
   }
 
-  return {};
+  const tertiary = flipLetter(auxiliary);
+  const inferior = flipLetter(dominant);
+
+  return {
+    dominant,
+    auxiliary,
+    tertiary,
+    inferior
+  };
+}
+
+function flipLetter(str) {
+  return (
+    mbtiCategories[str[0].toLowerCase()].toUpperCase() + mbtiCategories[str[1]]
+  );
 }
